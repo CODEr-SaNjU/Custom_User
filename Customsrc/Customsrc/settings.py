@@ -80,7 +80,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'CustomDb',
+        'NAME': 'CustomProjectDb',
 
         'USER': 'postgres',
 
@@ -91,6 +91,9 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+
+AUTH_USER_MODEL = 'Customapp.UserProfile'
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
