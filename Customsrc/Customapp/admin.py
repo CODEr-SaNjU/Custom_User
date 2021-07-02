@@ -7,22 +7,22 @@ from .models import UserProfile
 class UserProfileAdmin(UserAdmin):
     add_form = UserProfileCreationForm
     form = UserProfileChangeForm
-    list_display = ['Email', 'Full_Name', 'Mob_Number', 'admin', 'is_staff']
+    list_display = ['email', 'full_name', 'mob_number', 'admin', 'is_staff']
     fieldsets = (
-        (None, {'fields': ('Email',  'password', 'ProfilePhoto')}),
+        (None, {'fields': ('email',  'password', 'profile_photo')}),
         ('Personal Info', {
-            'fields': ('Full_Name', 'Mob_Number',)}),
+            'fields': ('full_name', 'mob_number',)}),
         ('Permissions', {'fields': ('date_joined', 'is_staff',
                                     'is_active', 'admin')}),
     )
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
-            'fields': ('Email',  'password1', 'password2', 'is_staff', 'is_active', 'admin')}
+            'fields': ('email',  'password1', 'password2', 'is_staff', 'is_active', 'admin')}
          ),
     )
-    search_fields = ['Email', 'Mob_Number', 'Full_Name']
-    ordering = ['Email', 'Mob_Number']
+    search_fields = ['email', 'mob_number', 'full_name']
+    ordering = ['email', 'mob_number']
 
 
 admin.site.register(UserProfile, UserProfileAdmin)

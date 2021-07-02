@@ -1,0 +1,61 @@
+{% extends "Frontend_files/base.htm" %}
+{% block content %}
+{% load static %}
+<style>
+    .my-2{
+        margin-top: 1.5rem!important;
+        margin-bottom: 1.5rem!important;
+    }
+    
+    .card {
+        box-shadow: 0 20px 40px 0 #4895ef;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    .card:hover {
+        box-shadow: 0 40px 80px 0 #ff99c8;
+    }
+    .btn-block{
+        width: 100%;
+        background-color: #abc4ff;
+    }
+</style>
+<hr class="my-2">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <button type="button" class="btn btn-sm btn-block"  >Create New User</button>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Sr No</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Mobile Number</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in object_list %}
+                <tr>
+                    <td>{{ forloop.counter  }}</td>
+                    <td>{{i.full_name}}</td>
+                    <td>{{i.email}}</td>
+                    <td>{{i.mob_number}}</td>
+                    <td>
+                        <button type="button" class="btn btn-info btn-sm">Edit</button>
+                        <button type="button" class="btn btn-danger btn-sm">Delete</button>
+                    </td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="12"  class="text-center bg-warning">No Enquiry</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

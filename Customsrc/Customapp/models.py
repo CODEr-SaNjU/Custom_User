@@ -10,7 +10,7 @@ from django.core.validators import RegexValidator
 
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
-    Email = models.EmailField(
+    email = models.EmailField(
         "Email Address",
         max_length=255,
         unique=True,
@@ -19,7 +19,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     phone_regex = RegexValidator(regex=r"^(?:[0-9]●?){6,14}[0-9]$", message=(
         "Enter a valid international mobile phone number starting with +(country code)"))
 
-    Mob_Number = models.CharField(
+    mob_number = models.CharField(
         "Phone Number ",
         validators=[phone_regex],
         max_length=20,
@@ -27,22 +27,22 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         error_messages={'unique': (
             "A user with that Phone Number address already exists")},
         null=True, blank=True)
-    Full_Name = models.CharField("Full Name", max_length=300)
+    full_name = models.CharField("Full Name", max_length=300)
     is_active = models.BooleanField(default=True)
     # a admin user; non super-user
     is_staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)  # a superuser
     date_joined = models.DateTimeField('date joined', default=timezone.now)
-    ProfilePhoto = models.ImageField(
+    profile_photo = models.ImageField(
         upload_to='photos/', null=True, blank=True)
 
     objects = UserManager()
 
-    USERNAME_FIELD = 'Email'
-    REQUIRED_FIELDS = ['Mob_Number']
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ['mob_number']
 
     class Meta:
-        ordering = ['Email']
+        ordering = ['email']
         verbose_name = ('User Profile')
         verbose_name_plural = ('Users Profile')
 
@@ -50,4 +50,4 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         '''
         send email to this user
         '''
-        send_mail(subject, message, from_email, [self.Email], **kwargs)
+        send_mail(subject, message, from_email, [self.email], **kwargs)

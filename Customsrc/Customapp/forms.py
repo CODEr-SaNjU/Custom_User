@@ -6,11 +6,10 @@ class UserProfileCreationForm(UserCreationForm):
 
     class Meta:
         model = UserProfile
-        fields = ('Email',)
-
+        fields = ('email','full_name','mob_number','profile_photo')
 
 class UserProfileChangeForm(UserChangeForm):
 
     class Meta:
         model = UserProfile
-        fields = ('Email',)
+        fields = ('email',)

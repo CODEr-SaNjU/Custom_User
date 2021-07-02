@@ -4,30 +4,30 @@ from django.contrib.auth.base_user import BaseUserManager
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
-    def _create_user(self, Mob_Number, Email, password, **extra_fields):
+    def _create_user(self, mob_number, email, password, **extra_fields):
         """
         create and save  a User with the given email and password
         """
-        if not Email:
+        if not email:
             raise ValueError(
-                'The User must have an  Email address')
-        Email = self.normalize_email(Email)
+                'The User must have an  email address')
+        email = self.normalize_email(email)
         user = self.model(
-            Email=Email,
-            Mob_Number=Mob_Number,
+            email=email,
+            mob_number=mob_number,
             **extra_fields)
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_user(self, Email, Mob_Number, password, **extra_fields):
+    def create_user(self, email, mob_number, password, **extra_fields):
         """
         create and save a staff user with the given email and password
         """
         extra_fields.setdefault('is_superuser', False)
         user = self._create_user(
-            Email=Email,
-            Mob_Number=Mob_Number,
+            email=email,
+            mob_number=mob_number,
             password=password,
 
         )
@@ -35,7 +35,7 @@ class UserManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, Email, Mob_Number, password, **extra_fields):
+    def create_superuser(self, email, mob_number, password, **extra_fields):
         """
         creates and saves a superuser with the given email and password
         """
@@ -43,8 +43,8 @@ class UserManager(BaseUserManager):
         if extra_fields.get('is_superuser') is not True:
             raise ValueError('SuperUser must have is_superuser =True')
         user = self._create_user(
-            Email=Email,
-            Mob_Number=Mob_Number,
+            email=email,
+            mob_number=mob_number,
             password=password,
 
         )
