@@ -52,7 +52,10 @@ class LoginView(View):
 
 
     def  get(self,request):
-        return render(request,"Frontend_files/login.htm")
+        if self.request.user.is_authenticated:
+            return redirect('userprofileview')
+        else:
+            return render(request,"Frontend_files/login.htm")
 class LogoutView(View):
     def get(self, request):
         logout(request)
