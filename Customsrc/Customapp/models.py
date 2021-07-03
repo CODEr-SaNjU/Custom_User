@@ -17,7 +17,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         error_messages={'unique': ("A user with that Email address already exists")})
 
     phone_regex = RegexValidator(regex=r"^(?:[0-9]●?){6,14}[0-9]$", message=(
-        "Enter a valid international mobile phone number starting with +(country code)"))
+        "Enter a valid international mobile phone number "))
 
     mob_number = models.CharField(
         "Phone Number ",
@@ -25,7 +25,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         max_length=20,
         unique=True,
         error_messages={'unique': (
-            "A user with that Phone Number address already exists")},
+            "A user with that phone number address already exists")},
         null=True, blank=True)
     full_name = models.CharField("Full Name", max_length=300)
     is_active = models.BooleanField(default=True)
@@ -46,6 +46,7 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         verbose_name = ('User Profile')
         verbose_name_plural = ('Users Profile')
 
+    #if we want send a mail to user when user is create 
     def email_user(self, subject, message, from_email=None, **kwargs):
         '''
         send email to this user

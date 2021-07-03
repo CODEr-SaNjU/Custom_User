@@ -4,7 +4,7 @@ from django.http import HttpResponseRedirect,HttpResponse
 from .models import UserProfile
 from django.conf import settings
 from django.contrib import messages
-from .forms import UserProfileCreationForm,UserProfileChangeForm
+from .forms import UserProfileCreationForm
 from django.views.generic import ListView, UpdateView, DeleteView, CreateView,View
 from django.contrib.auth import authenticate ,login,logout
 
