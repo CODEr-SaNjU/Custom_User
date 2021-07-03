@@ -23,6 +23,7 @@
             <button type="button" class="btn btn-sm btn-block">User Delete </button>
             <hr>
             <form action="" method="POST">
+                {% csrf_token %}
                 <p>Are you sure you want to delete User 
                     <strong>{{ i.full_name}}</strong>?
                 </p>

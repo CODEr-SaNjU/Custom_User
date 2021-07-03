@@ -16,19 +16,19 @@ class UserProfileCreateView(CreateView):
     model = UserProfile
     form_class = UserProfileCreationForm
     template_name = "Frontend_files/userprofile_create.htm"
-    success_url = '/userprofileview/'
+    success_url = '/user-list/'
 
 
 class UserProfileUpdateView(UpdateView):
     model = UserProfile
     form_class = UserProfileCreationForm
     template_name = "Frontend_files/userprofile_update.htm"
-    success_url = '/userprofileview/'
+    success_url = '/user-list/'
 
 class UserProfileDeleteView(DeleteView):
     model = UserProfile
     template_name = "Frontend_files/userprofile_delete.htm"
-    success_url = '/userprofileview/'
+    success_url = '/user-list/'
 
 
 
