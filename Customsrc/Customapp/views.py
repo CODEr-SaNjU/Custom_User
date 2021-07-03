@@ -22,9 +22,10 @@ class UserProfileCreateView(CreateView):
 class UserProfileUpdateView(UpdateView):
     model = UserProfile
     form_class = UserProfileCreationForm
-    template_name = "Frontend_files/userprofile_create.htm"
-    success_url = ''
+    template_name = "Frontend_files/userprofile_update.htm"
+    success_url = '/'
 
 class UserProfileDeleteView(DeleteView):
     model = UserProfile
-    template_name = ".html"
+    template_name = "Frontend_files/userprofile_delete.htm"
+    success_url = '/'

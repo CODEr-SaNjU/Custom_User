@@ -20,13 +20,14 @@
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <button type="button" class="btn btn-sm btn-block">User Registration</button>
+            <button type="button" class="btn btn-sm btn-block">User Delete </button>
             <hr>
-            <form action="" method="post">
-                {% csrf_token %}
-                {{ form.as_p }}
+            <form action="" method="POST">
+                <p>Are you sure you want to delete User 
+                    <strong>{{ i.full_name}}</strong>?
+                </p>
                 <button type="submit" class="btn btn-success">submit </button>
-                <button type="reset" class="btn btn-danger">Cancel </button>
+                <a href="{% url 'userprofileview' %}" class="btn btn-danger">Cancel </a>
             </form>
         </div>
     </div>
