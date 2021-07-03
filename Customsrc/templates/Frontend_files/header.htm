@@ -7,5 +7,11 @@
 </style>
 
 <div class="bg-info header">
-    <h2 class="text-uppercase text-center">User Profile View Here </h2>
+    <div>
+        <h2 class="text-uppercase text-center">User Profile View Here </h2>
+        {% if request.user.is_authenticated %}
+        <h3 class="text-uppercase text-right text-primary">welcome {{request.user.full_name}}</h3>
+        <a href="{% url 'logout' %}" class="ml-2 text-dark"><button class="btn btn-primary" type="button">Logout</button></a>
+        {% endif %}
+    </div>
 </div>

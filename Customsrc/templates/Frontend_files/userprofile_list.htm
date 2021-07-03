@@ -43,6 +43,9 @@
                     <td>{{i.full_name}}</td>
                     <td>{{i.email}}</td>
                     <td>{{i.mob_number}}</td>
+                    {% if i.profile_photo %}
+                        <td><img src="{{ i.profile_photo.url }}"></td>
+                    {% endif %}
                     <td>
                         <a href="{% url 'userprofileupdate' i.id %}" class="btn btn-info btn-sm">Edit</a>
                         <a href="{% url 'userprofiledelete' i.id %}" class="btn btn-danger btn-sm">Delete</a>

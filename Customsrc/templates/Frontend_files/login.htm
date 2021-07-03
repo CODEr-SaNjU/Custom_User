@@ -1,0 +1,52 @@
+{% extends "Frontend_files/base.htm" %}
+{% block content %}
+{% load static %}
+<style>
+    .card {
+        box-shadow: 0 20px 40px 0 #00afb9;
+        transition: 0.3s;
+        width: 100%;
+    }
+
+    .card:hover {
+        box-shadow: 0 40px 80px 0 #07beb8;
+    }
+    .btn-block{
+        width: 100%;
+        background-color: #eae2b7;
+    }
+</style>
+<hr class="my-2">
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <div class="header bg-info text-uppercase text-center text-dark"> Login Form</div>
+            <hr class="my-2">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <div>
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                        <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                            <div class="alert alert-danger" role="alert">&nbsp;{{ message }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="mb-3">
+                    <label for="emailaddress" class="form-label">Email address</label>
+                    <input type="email" name="email" class="form-control" id="emailaddress" autocomplete="off">
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input  type="password" name="password" class="form-control" id="password" autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-success">Submit</button>
+                <button type="reset" class="btn btn-danger">cancel</button>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
