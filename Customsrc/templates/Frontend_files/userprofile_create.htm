@@ -1,6 +1,9 @@
 {% extends "Frontend_files/base.htm" %}
 {% block content %}
+{% load i18n %}
 {% load static %}
+
+{% load widget_tweaks %}
 <style>
     .card {
         box-shadow: 0 20px 40px 0 #00afb9;
@@ -15,16 +18,60 @@
         width: 100%;
         background-color: #eae2b7;
     }
+    .container{
+        padding: 20px;
+    }
+    .user-reg-form{
+        padding: 30px;
+    }
+    .row{
+        padding: 10px;
+    }
 </style>
-<hr class="my-2">
 <div class="container">
     <div class="card">
         <div class="card-body">
             <button type="button" class="btn btn-sm btn-block">User Registration</button>
-            <hr>
-            <form action="" method="post">
+            <form action="" method="post" class="user-reg-form">
                 {% csrf_token %}
-                {{ form.as_p }}
+                <!-- {{ form.as_p }} -->
+                <!-- {% render_field form.refer_by class="form-control" %} -->
+                <div class="message">
+                    {% if messages %}
+                    <div class="messages">
+                        {% for message in messages %}
+                        <div{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                            <div class="alert alert-danger" role="alert">&nbsp;{{ message }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% render_field form.first_name class="form-control " placeholder='First Name'%}
+                    </div>
+                    <div class="col">
+                        {% render_field form.last_name class="form-control " placeholder='Last Name'%}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% render_field form.email class="form-control " placeholder='Email address'%}
+                    </div>
+                    <div class="col">
+                        {% render_field form.mob_number class="form-control " placeholder='Mob Number'%}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {% render_field form.password1 class="form-control " placeholder='Password Here'%}
+                    </div>
+                    <div class="col">
+                        {% render_field form.password2 class="form-control " placeholder='Confirm Password'%}
+                    </div>
+                </div>
+                
                 <button type="submit" class="btn btn-success">submit </button>
                 <button type="reset" class="btn btn-danger">Cancel </button>
             </form>

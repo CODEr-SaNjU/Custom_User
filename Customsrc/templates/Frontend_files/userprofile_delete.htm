@@ -25,7 +25,7 @@
             <form action="" method="POST">
                 {% csrf_token %}
                 <p>Are you sure you want to delete User 
-                    <strong>{{ i.full_name}}</strong>?
+                    <strong>{{ i.first_name}}</strong>?
                 </p>
                 <button type="submit" class="btn btn-success">submit </button>
                 <a href="{% url 'userprofileview' %}" class="btn btn-danger">Cancel </a>

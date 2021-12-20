@@ -3,26 +3,35 @@
 {% load static %}
 <style>
     .card {
-        box-shadow: 0 20px 40px 0 #00afb9;
+        box-shadow: 0 20px 40px 0 #000000;
         transition: 0.3s;
-        width: 100%;
+        width: 50%;
+        height: 50%;
+        margin-left: 25%;
+        border: none;
+    }
+    .create a{
+        text-decoration: none;
+        color: #a2d2ff;
     }
 
-    .card:hover {
-        box-shadow: 0 40px 80px 0 #07beb8;
-    }
+
     .btn-block{
         width: 100%;
         background-color: #eae2b7;
     }
+    .container{
+        padding: 20px;
+    }
+    .login-form{
+        padding: 20px;
+    }
 </style>
-<hr class="my-2">
 <div class="container">
     <div class="card">
         <div class="card-body">
-            <div class="header bg-info text-uppercase text-center text-dark"> Login Form</div>
-            <hr class="my-2">
-            <form action="" method="POST">
+            <div class="header text-uppercase text-center text-dark"> Login Form</div>
+            <form action="" class="login-form" method="POST">
                 {% csrf_token %}
                 <div>
                     {% if messages %}
@@ -43,6 +52,10 @@
                     <label for="password" class="form-label">Password</label>
                     <input  type="password" name="password" class="form-control" id="password" autocomplete="off">
                 </div>
+                <div class="mb-3">
+                    <div class="create text-uppercase"><a href="{% url 'userprofilecreate' %}">create a user</a></div>
+                </div>
+
                 <button type="submit" class="btn btn-success">Submit</button>
                 <button type="reset" class="btn btn-danger">cancel</button>
         </div>

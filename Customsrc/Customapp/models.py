@@ -3,6 +3,7 @@ from django.db import models
 from django.core.mail import send_mail
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
+from django.db.models.constraints import Deferrable
 from django.db.models.fields.related import ForeignKey
 from .managers import UserManager
 from django.utils import timezone, tree
@@ -27,14 +28,14 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
         error_messages={'unique': (
             "A user with that phone number address already exists")},
         null=True, blank=True)
-    full_name = models.CharField("Full Name", max_length=300)
+    first_name = models.CharField("First Name", max_length=300, )
+    last_name = models.CharField("Last Name", max_length=300, )
     is_active = models.BooleanField(default=True)
     # a admin user; non super-user
     is_staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)  # a superuser
     date_joined = models.DateTimeField('date joined', default=timezone.now)
-    profile_photo = models.ImageField(
-        upload_to='photos/', null=True, blank=True)
+    
 
     objects = UserManager()
 
